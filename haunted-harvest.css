@@ -8,6 +8,10 @@
   --candle-glow: #ffd60a;
 }
 
+#main-container{
+    text-align: center;
+}
+
 /* Reduced Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -21,17 +25,11 @@
 .scenes:not(:has(.scene:target)) .scene:first-child { display: block; }
 .scene:target { display: block; }
 
-/* Glowing jack-o'-lantern flicker */
-@keyframes flicker {
-  0%, 100% { opacity: 1; filter: drop-shadow(0 0 12px var(--pumpkin)); }
-  50%      { opacity: 0.75; }
-}
-
-.pumpkin-glow {
-  animation: flicker 2.5s ease-in-out infinite;
-}
-
 /* Fog drift */
+.fog {
+    animation: drift;
+}
+
 @keyframes drift {
   from { transform: translateX(-100%); }
   to   { transform: translateX(100%); }
@@ -85,6 +83,20 @@ body {
     position: absolute;
     width: 250px;
     z-index: 3;
+/* The object that will fly */
+.flying-object {
+  font-size: 3rem;
+  position: absolute;
+  /* Bind the keyframes, set duration, timing, and loop infinitely */
+  animation: flyAround 6s linear infinite; 
+}
+
+.flying-thing {
+  position: absolute;
+  width: 100px;
+  top: 20%;
+  left: -150px; /* Start completely off-screen to the left */
+  animation: flyAcross 8s linear infinite; /* 8 seconds duration, linear speed, loops forever */
 }
 
 .cloud1 {
