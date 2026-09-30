@@ -36,3 +36,90 @@
   from { transform: translateX(-100%); }
   to   { transform: translateX(100%); }
 }
+
+/* Container representing the sky or screen area */
+.sky {
+  width: 100%;
+  height: 400px;
+  background-color: #cceeff; /* Light blue sky */
+  position: relative;
+  overflow: hidden; /* Keeps the object from causing scrollbars */
+}
+
+/* The object that will fly */
+.flying-object {
+  font-size: 3rem;
+  position: absolute;
+  /* Bind the keyframes, set duration, timing, and loop infinitely */
+  animation: flyAround 6s linear infinite; 
+}
+
+.sky {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Hides the object when it goes outside the screen */
+  background: #e0f7fa;
+}
+
+.flying-object {
+  position: absolute;
+  width: 100px;
+  top: 20%;
+  left: -150px; /* Start completely off-screen to the left */
+  animation: flyAcross 8s linear infinite; /* 8 seconds duration, linear speed, loops forever */
+}
+
+.sky {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Hides the object when it goes outside the screen */
+  background: #e0f7fa;
+}
+
+.flying-object {
+  position: absolute;
+  width: 100px;
+  top: 20%;
+  left: -150px; /* Start completely off-screen to the left */
+  animation: flyAcross 8s linear infinite; /* 8 seconds duration, linear speed, loops forever */
+}
+
+@keyframes flyAcross {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(calc(100vw + 150px)) translateY(-50px); /* Move across screen and drift up */
+  }
+  50.01% {
+    transform: translateX(-150px) translateY(50px); /* Instantly reset position off-screen elsewhere */
+  }
+  100% {
+    transform: translateX(calc(100vw + 150px)) translateY(0); /* Fly across again */
+  }
+}
+
+.marquee-container {
+  overflow: hidden; /* Hides the element when it goes off-screen */
+  white-space: nowrap;
+  background-color: #f1f1f1;
+  padding: 10px 0;
+}
+
+.marquee-text {
+  display: inline-block;
+  font-size: 24px;
+  /* Animates infinitely in a straight linear timeline */
+  animation: marquee 10s linear infinite; 
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%); /* Start completely off-screen to the right */
+  }
+  100% {
+    transform: translateX(-100%); /* Finish completely off-screen to the left */
+  }
+}
