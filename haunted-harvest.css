@@ -35,6 +35,54 @@
   to   { transform: translateX(100%); }
 }
 
+/* Container representing the sky or screen area */
+.sky {
+  width: 100%;
+  height: 400px;
+  background-color: #cceeff; /* Light blue sky */
+  position: relative;
+  overflow: hidden; /* Keeps the object from causing scrollbars */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background: #1a1423;
+}
+
+/* Main scene */
+.beach-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/*beach*/
+
+.beach {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+
+/*clouds*/
+
+.cloud {
+    position: absolute;
+    width: 250px;
+    z-index: 3;
 /* The object that will fly */
 .flying-object {
   font-size: 3rem;
@@ -51,40 +99,312 @@
   animation: flyAcross 8s linear infinite; /* 8 seconds duration, linear speed, loops forever */
 }
 
-@keyframes flyAcross {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  50% {
-    transform: translateX(calc(100vw + 150px)) translateY(-50px); /* Move across screen and drift up */
-  }
-  50.01% {
-    transform: translateX(-150px) translateY(50px); /* Instantly reset position off-screen elsewhere */
-  }
-  100% {
-    transform: translateX(calc(100vw + 150px)) translateY(0); /* Fly across again */
-  }
+.cloud1 {
+    top: 12%;
+    left: -300px;
+
+    animation: cloudMove 25s linear infinite;
 }
 
-.marquee-container {
-  overflow: hidden; /* Hides the element when it goes off-screen */
-  white-space: nowrap;
-  background-color: #f1f1f1;
-  padding: 10px 0;
+.cloud2 {
+    top: 25%;
+    left: -400px;
+
+    animation: cloudMove 35s linear infinite;
+    animation-delay: 8s;
 }
 
-.marquee-text {
-  display: inline-block;
-  font-size: 24px;
-  /* Animates infinitely in a straight linear timeline */
-  animation: marquee 10s linear infinite; 
+/*cloud movement*/
+@keyframes cloudMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(100vw + 500px));
+    }
+
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(100%); /* Start completely off-screen to the right */
-  }
-  100% {
-    transform: translateX(-100%); /* Finish completely off-screen to the left */
-  }
+
+/*ghost ship*/
+
+.ship {
+    position: absolute;
+    width: 250px;
+
+    bottom: 42%;
+    left: -300px;
+
+    z-index: 4;
+
+    animation: shipMove 30s linear infinite;
+}
+
+/*ship moving*/
+@keyframes shipMove {
+
+    0% {
+        left: -300px;
+    }
+
+    100% {
+        left: 110%;
+    }
+
+}
+
+
+/*bats*/
+
+.bat {
+    position: absolute;
+    width: 100px;
+
+    z-index: 6;
+
+    left: -150px;
+}
+
+.bat1 {
+    top: 15%;
+
+    animation: batFly 9s linear infinite;
+}
+
+.bat2 {
+    top: 30%;
+
+    animation: batFly 12s linear infinite;
+    animation-delay: 3s;
+}
+
+/*bats flying*/
+@keyframes batFly {
+
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(55vw) translateY(-50px);
+    }
+
+    100% {
+        transform: translateX(110vw) translateY(30px);
+    }
+
+}
+
+
+/*seagull*/
+
+.seagull {
+    position: absolute;
+
+    width: 90px;
+
+    top: 20%;
+    left: -100px;
+
+    z-index: 5;
+
+    animation: seagullFly 15s linear infinite;
+}
+
+@keyframes seagullFly {
+
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(50vw) translateY(-30px);
+    }
+
+    100% {
+        transform: translateX(110vw) translateY(20px);
+    }
+
+}
+
+
+/*bonfire*/
+
+.bonfire {
+    position: absolute;
+
+    width: 180px;
+
+    bottom: 12%;
+    left: 35%;
+
+    z-index: 8;
+
+    /* Makes the fire glow */
+    filter: drop-shadow(0 0 20px orange);
+
+    animation: fireGlow 1.5s ease-in-out infinite;
+}
+
+/*fire*/
+@keyframes fireGlow {
+
+    0% {
+        filter: drop-shadow(0 0 10px orange);
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 30px orange);
+        transform: scale(1.05);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 10px orange);
+        transform: scale(1);
+    }
+
+}
+
+
+/* pirate*/
+
+.pirate {
+    position: absolute;
+
+    width: 150px;
+
+    bottom: 12%;
+    left: 28%;
+
+    z-index: 7;
+}
+
+
+/*crab*/
+
+.crab {
+    position: absolute;
+
+    width: 80px;
+
+    bottom: 5%;
+    left: -100px;
+
+    z-index: 10;
+
+    animation: crabWalk 12s linear infinite;
+}
+
+/* crab scuddling*/
+@keyframes crabWalk {
+
+    0% {
+        left: -100px;
+    }
+
+    100% {
+        left: 110%;
+    }
+
+}
+
+
+/*waves*/
+
+.waves {
+    position: absolute;
+
+    width: 100%;
+
+    bottom: 20%;
+    left: 0;
+
+    z-index: 5;
+
+    animation: waveMove 4s ease-in-out infinite;
+}
+
+/* waving */
+@keyframes waveMove {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-15px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+
+/*floating lantern*/
+
+.lantern {
+    position: absolute;
+
+    width: 70px;
+
+    bottom: -100px;
+
+    z-index: 12;
+
+    animation: lanternRise 12s linear infinite;
+}
+
+.lantern1 {
+    left: 15%;
+}
+
+.lantern2 {
+    left: 50%;
+
+    animation-delay: 4s;
+}
+
+.lantern3 {
+    left: 80%;
+
+    animation-delay: 7s;
+}
+
+
+/*lantern rising*/
+@keyframes lanternRise {
+
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-50vh);
+    }
+
+    100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
 }
