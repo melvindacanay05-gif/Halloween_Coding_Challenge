@@ -83,12 +83,14 @@ body {
     position: absolute;
     width: 250px;
     z-index: 3;
+}
 /* The object that will fly */
 .flying-object {
   font-size: 3rem;
   position: absolute;
   /* Bind the keyframes, set duration, timing, and loop infinitely */
-  animation: flyAround 6s linear infinite; 
+  animation: flyAround 6s linear infinite;
+  z-index: 3; 
 }
 
 .flying-thing {
@@ -97,6 +99,7 @@ body {
   top: 20%;
   left: -150px; /* Start completely off-screen to the left */
   animation: flyAcross 8s linear infinite; /* 8 seconds duration, linear speed, loops forever */
+  z-index: 3;
 }
 
 .cloud1 {
@@ -169,7 +172,7 @@ body {
 
 .bat1 {
     top: 15%;
-
+    z-index: 6;
     animation: batFly 9s linear infinite;
 }
 
@@ -317,7 +320,7 @@ body {
 .waves {
     position: absolute;
 
-    width: 100%;
+    width: 80%;
 
     bottom: 20%;
     left: 0;
